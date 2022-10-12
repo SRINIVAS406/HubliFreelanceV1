@@ -1,0 +1,108 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">BJP</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div class="mt-5">
+  <hr>
+</div>
+<div class="container mt-5">
+  <div id="chart_div"></div>
+</div>
+
+
+<button style="display:none;" type="button" id="openblockdetail" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#blockdetail">
+</button>
+
+<!-- Modal -->
+<div style="display:none;" class="modal fade" id="blockdetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="blockdetailLabel">Block title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><a href="#chart_div"></a></button>
+      </div>
+      <div class="modal-body">
+        <!-- ***************************Form Data***************************** -->
+        <div class="container">
+          <div class="center"><img src="male.png" alt="Avatar" id="cardimg" style="display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 50%;"></div>
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name">
+
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" id="age" name="age">
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <input type="text" class="form-control" id="gender" name="gender">
+            </div>
+            <div class="mb-3">
+              <label for="ward_no" class="form-label">Ward Number</label>
+              <input type="text" class="form-control" id="ward_no" name="ward_no">
+            </div>
+            <div class="mb-3">
+              <label for="poll_no" class="form-label">Polling Station Number</label>
+              <input type="text" class="form-control" id="poll_no" name="poll_no">
+            </div>
+            <div class="mb-3">
+              <label for="booth_no" class="form-label">Booth Number</label>
+              <input type="text" class="form-control" id="booth_no" name="booth_no">
+            </div>
+            <div class="mb-3">
+              <label for="caste" class="form-label">Caste</label>
+              <input type="text" class="form-control" id="caste" name="caste">
+            </div>
+            <div class="mb-3">
+              <label for="sub_caste" class="form-label">Sub-Caste</label>
+              <input type="text" class="form-control" id="sub_caste" name="sub_caste">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">House Address</label>
+              <textarea class="form-control" id="address" name="address" rows="5">
+                                </textarea>
+            </div>
+            <div class="mb-3">
+              <label for="id_proof" class="form-label">ID Proof</label>
+              <input type="text" class="form-control" id="id_proof" name="id_proof">
+              <div id="emailHelp" class="form-text">Please provide authentic proof.</div>
+            </div>
+
+            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+          </form>
+        </div>
+        <!-- ***************************************************************** -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../JS/orgtreejs.js"></script>
+<link rel="stylesheet" href="../CSS/orgtree.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
