@@ -1,8 +1,10 @@
+
 var allData = [];
         var treeData = [];
         var relationships = {};
-        fetch('data.json').then((response) => response.json()).then((json) => {
-            //console.log(json);
+        fetch('/orgtreedata').then((response) => response.json()).then((json) => {
+            console.log('rmau');
+            console.log(json);
             if (json) {
                 treeData = json;
                 for (let i in json) {
@@ -106,7 +108,7 @@ var allData = [];
         <div id="tnode" class="tnode" style="width:auto;">
             <div id="cardid">${i}</div>
             <div class="card_body">
-                <img src="male.png" alt="Avatar" id="cardimg" style="width:50px;height:50px;">
+                <img src="/JS/male.png" alt="Avatar" id="cardimg" style="width:50px;height:50px;">
                 <div class="">
                     <p><b id="cardname">${treeData[i].name}</b></p>
                     <p id="cardtitle">${treeData[i].title}</p>

@@ -1,15 +1,22 @@
 import UserModel from '../models/User.js'
+import TreeModel from '../models/treedata.js'
 import bcrypt from 'bcrypt'
+
 
 
 
 class UserController {
     static validUser = false;
+    static userEmail = '';
+    static userName = '';
     static home = (req, res) => {
-        if(this.validUser)
-        res.render("index")
+        if (this.validUser)
+            res.render("index", {
+                email: this.userEmail,
+                name:this.userName
+            });
         else
-        res.render("login")
+            res.render("login")
     }
     static registration = (req, res) => {
         res.render("registration")
@@ -41,14 +48,14 @@ class UserController {
     } */
 
     static createUserDoc = async (req, res) => {
-    const hasPassword = await bcrypt.hash(req.body.password,10);
+        const hasPassword = await bcrypt.hash(req.body.password, 10);
         try {
             //creating new document using new model
             const doc = new UserModel({
                 name: req.body.name,
                 email: req.body.email,
                 password: hasPassword,
-                decryptPassword:req.body.password
+                decryptPassword: req.body.password
             })
 
             console.log(req.body);
@@ -89,10 +96,13 @@ class UserController {
         try {
             const { email, password } = req.body;
             const result = await UserModel.findOne({ email: email })
+
             if (result) {
                 var passwordcheck = await bcrypt.compare(password, result.password);
                 if (result.email == email && passwordcheck) {
-                    res.redirect("/");
+                    this.userEmail = email;
+                    this.userName = result.name;
+                    res.redirect('/');
                     this.validUser = true;
                 } else {
                     res.redirect('/login?msg=login_failed');
@@ -101,10 +111,23 @@ class UserController {
                 //res.send("<h1>Email Not found..</h1>");
                 res.redirect('/login?msg=email_not_found');
             }
-            
+
         } catch (err) {
             console.log(err);
         }
+    }
+
+    static orgtreedata = (req, res) => {
+        if (this.validUser) {
+            TreeModel.find((err, data) => {
+                if (!err) {
+                    res.json(data[0].userdata);
+                } else {
+                    console.log('Failed to retrieve the User List: ' + err);
+                }
+            });
+        } else
+        res.redirect("/login")
     }
 
 }
