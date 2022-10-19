@@ -19,7 +19,9 @@ class UserController {
             res.render("login")
     }
     static registration = (req, res) => {
-        res.render("registration")
+        res.render("registration",{
+            message:""
+        })
     }
     static logout = (req, res) => {
         this.validUser = false;
@@ -51,18 +53,25 @@ class UserController {
         const hasPassword = await bcrypt.hash(req.body.password, 10);
         try {
             //creating new document using new model
-            const doc = new UserModel({
-                name: req.body.name,
-                email: req.body.email,
-                password: hasPassword,
-                decryptPassword: req.body.password
-            })
-
-            console.log(req.body);
-
-            //Saving document
-            await doc.save()
-            res.redirect('/login')
+            const result = await UserModel.findOne({ email: req.body.email })
+            if(!result){
+                const doc = new UserModel({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hasPassword,
+                    decryptPassword: req.body.password
+                })
+    
+                console.log(req.body);
+    
+                //Saving document
+                await doc.save()
+                res.redirect('/login')    
+            }else{
+                res.render("registration", {
+                    message:"Email already present"
+                });
+            }
         } catch (err) {
             console.log("ERROR FROM UserControler: " + err);
         }
